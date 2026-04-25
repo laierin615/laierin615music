@@ -981,6 +981,84 @@
     .ws-field input, .ws-field textarea, .ws-field select { color: black; border-color: #333; }
     h1, h2, h3, .stage-zh-big, .type, .en, .zh, .title-zh, .zh-big { color: black !important; }
   }
+
+  /* ====== SESSION 4 ====== */
+  .s4-song-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 24px; }
+  @media (max-width: 900px) { .s4-song-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .s4-song-grid { grid-template-columns: 1fr; } }
+
+  .s4-song-card {
+    border: 1px solid var(--border);
+    padding: 18px 20px;
+    background: var(--bg2);
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .s4-song-card:hover { border-color: var(--accent); background: var(--bg3); transform: translateY(-2px); }
+  .s4-song-card.selected { border-color: var(--accent); background: var(--accent-dim); }
+  .s4-song-card.selected .s4-song-check { color: var(--accent); }
+  .s4-song-check { font-size: 18px; color: var(--text3); transition: color 0.2s; }
+  .s4-song-title { font-size: 16px; font-weight: 600; color: var(--text); }
+  .s4-song-sub { font-size: 12px; color: var(--text3); font-family: var(--mono); letter-spacing: 0.5px; }
+  .s4-song-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-family: var(--mono);
+    border-radius: 2px;
+    align-self: flex-start;
+    margin-top: 4px;
+  }
+  .s4-song-badge.ancient { background: rgba(212,255,0,0.12); color: var(--accent2); border: 1px solid rgba(212,255,0,0.3); }
+  .s4-song-badge.new { background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(255,46,99,0.3); }
+  .s4-song-badge.other { background: rgba(0,229,255,0.1); color: var(--accent3); border: 1px solid rgba(0,229,255,0.25); }
+
+  .s4-add-box { border: 1px dashed var(--border2); background: var(--bg2); padding: 24px 28px; margin-top: 8px; }
+  .s4-text-input {
+    background: transparent; border: none; border-bottom: 1px solid var(--border2);
+    color: var(--text); font-family: var(--display); font-size: 15px;
+    padding: 6px 0; outline: none;
+  }
+  .s4-select {
+    background: var(--bg3); border: 1px solid var(--border2); color: var(--text2);
+    font-family: var(--mono); font-size: 13px; padding: 6px 10px; outline: none;
+  }
+
+  .s4-discuss-card { display: flex; flex-direction: column; gap: 14px; }
+  .s4-q-label { font-family: var(--mono); font-size: 12px; letter-spacing: 1px; }
+  .s4-q-text { font-size: 15px; color: var(--text); line-height: 1.7; }
+  .s4-q-hint { font-size: 13px; color: var(--text3); }
+  .s4-textarea {
+    background: transparent; border: none; border-bottom: 1px solid var(--border2);
+    color: var(--text); font-family: var(--display); font-size: 14px;
+    padding: 6px 0; outline: none; resize: none; min-height: 56px; width: 100%;
+    line-height: 1.6;
+  }
+  .s4-textarea::placeholder { color: var(--text3); }
+
+  .s4-team-input {
+    background: transparent; border: none; border-bottom: 2px solid var(--accent);
+    color: var(--text); font-family: var(--display); font-size: 26px; font-weight: 700;
+    text-align: center; outline: none; width: 100%; padding: 8px 0;
+  }
+  .s4-team-input::placeholder { color: var(--text3); }
+
+  .s4-row td { border-bottom: 1px solid var(--border); padding: 10px 8px; vertical-align: middle; }
+  .s4-row-num { font-family: var(--mono); font-size: 13px; color: var(--text3); }
+  .s4-row input, .s4-row select {
+    background: transparent; border: none; border-bottom: 1px solid var(--border2);
+    color: var(--text); font-family: var(--display); font-size: 14px;
+    padding: 4px 0; outline: none; width: 100%;
+  }
+  .s4-row select { font-size: 13px; color: var(--text2); }
+  .s4-del-btn {
+    background: none; border: none; color: var(--text3); font-size: 18px;
+    cursor: pointer; padding: 0 4px; transition: color 0.2s;
+  }
+  .s4-del-btn:hover { color: var(--accent); }
 </style>
 </head>
 <body>
@@ -993,6 +1071,7 @@
     <li><a href="#session1" class="accent">S1</a></li>
     <li><a href="#session2" class="accent">S2</a></li>
     <li><a href="#session3" class="accent">S3</a></li>
+    <li><a href="#session4" class="accent">S4</a></li>
     <li><a href="#next">發表</a></li>
   </ul>
 </nav>
@@ -1007,6 +1086,7 @@
     <div><strong>S1</strong> 古調的現代新衣</div>
     <div><strong>S2</strong> 世界曲風 31 首</div>
     <div><strong>S3</strong> Suno AI 實作</div>
+    <div><strong>S4</strong> 發表演出規劃</div>
   </div>
 
   <div class="author-card">
@@ -1728,6 +1808,164 @@
   </div>
 </section>
 
+<!-- ============== SESSION 4 ============== -->
+<section id="session4">
+  <div class="session-header">
+    <div class="session-tag">SESSION 4</div>
+    <h1>發表演出規劃</h1>
+    <div class="session-sub">把五週的學習，變成一場真正的舞台 · 20 分鐘 · 公開演出</div>
+  </div>
+
+  <!-- 01 / MISSION -->
+  <div class="segment">
+    <div class="seg-label">01 / MISSION</div>
+    <h2>你們要辦一場演出</h2>
+    <p style="color:var(--text2);margin-top:12px;font-size:17px;line-height:1.9;">
+      20 分鐘、公開、有真實觀眾。不是練習、不是彩排——這是真的。<br>
+      演出由兩種節目組成：<strong style="color:var(--accent);">AI 創作的新歌</strong>，加上 <strong style="color:var(--accent2);">古謠隊的經典古調</strong>。
+    </p>
+    <div class="grid3" style="margin-top:40px;">
+      <div class="material-card">
+        <div class="num" style="color:var(--accent);">新</div>
+        <div class="type">Suno AI 新作品</div>
+        <div class="en">NEW ORIGINAL WORKS</div>
+        <div class="desc">本學期各組用 Suno 創作的歌曲，選出最好的在台上正式發表</div>
+        <div class="tag">建議 2–3 首 · 約 8 分鐘</div>
+      </div>
+      <div class="material-card">
+        <div class="num" style="color:var(--accent2);">古</div>
+        <div class="type">古謠隊經典</div>
+        <div class="en">TRADITIONAL CHORAL</div>
+        <div class="desc">寧埔古謠隊的根，挑選最能代表我們的古調一起唱</div>
+        <div class="tag">建議 2–3 首 · 約 8 分鐘</div>
+      </div>
+      <div class="material-card">
+        <div class="num" style="color:var(--accent3);">串</div>
+        <div class="type">串場與主持</div>
+        <div class="en">MC &amp; TRANSITIONS</div>
+        <div class="desc">節目之間的介紹、故事分享、換場等待時間</div>
+        <div class="tag">預留約 4 分鐘</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 / REPERTOIRE -->
+  <div class="segment">
+    <div class="seg-label">02 / REPERTOIRE</div>
+    <h2>古謠隊曲目庫</h2>
+    <p style="color:var(--text2);margin-top:12px;margin-bottom:32px;">
+      以下是古謠隊的常見曲目，討論並勾選這場演出想唱的歌。
+    </p>
+    <div class="s4-song-grid" id="repertoireGrid"></div>
+    <div class="s4-add-box">
+      <div class="seg-label" style="margin-bottom:12px;">ADD · 加入其他曲目</div>
+      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+        <input type="text" id="customSongInput" placeholder="輸入歌名…" class="s4-text-input" style="flex:1;min-width:180px;">
+        <select id="customSongType" class="s4-select">
+          <option value="古調">古調</option>
+          <option value="新作">新作</option>
+          <option value="其他">其他</option>
+        </select>
+        <button onclick="s4AddCustomSong()" class="play-btn" style="padding:10px 20px;">＋ 加入</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 / SETLIST -->
+  <div class="segment">
+    <div class="seg-label">03 / SETLIST</div>
+    <h2>20 分鐘節目單</h2>
+    <p style="color:var(--text2);margin-top:12px;margin-bottom:32px;">填寫演出順序，控制在 20 分鐘以內：</p>
+
+    <div style="margin-bottom:28px;">
+      <div style="display:flex;justify-content:space-between;margin-bottom:8px;font-family:var(--mono);font-size:12px;color:var(--text3);">
+        <span>0:00</span><span>5:00</span><span>10:00</span><span>15:00</span><span>20:00</span>
+      </div>
+      <div style="height:8px;background:var(--bg3);border-radius:4px;overflow:hidden;">
+        <div id="s4TimeBar" style="height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width 0.4s;border-radius:4px;"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:8px;font-family:var(--mono);font-size:13px;">
+        <span style="color:var(--text2);">已規劃 <span id="s4UsedMin" style="color:var(--accent);">0</span> 分</span>
+        <span style="color:var(--text2);">剩餘 <span id="s4LeftMin" style="color:var(--accent2);">20</span> 分</span>
+      </div>
+    </div>
+
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:15px;">
+        <thead>
+          <tr style="border-bottom:1px solid var(--border2);color:var(--text3);font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:1px;">
+            <td style="padding:10px 8px;width:32px;">#</td>
+            <td style="padding:10px 8px;">曲目名稱</td>
+            <td style="padding:10px 8px;width:72px;">類型</td>
+            <td style="padding:10px 8px;width:72px;">時長(分)</td>
+            <td style="padding:10px 8px;">演唱者 / 主持人</td>
+            <td style="padding:10px 8px;width:36px;"></td>
+          </tr>
+        </thead>
+        <tbody id="s4SetlistBody"></tbody>
+      </table>
+    </div>
+    <button onclick="s4AddRow()" class="play-btn" style="margin-top:20px;padding:12px 24px;background:transparent;border:1px solid var(--accent);color:var(--accent);">＋ 新增節目</button>
+  </div>
+
+  <!-- 04 / DISCUSS -->
+  <div class="segment">
+    <div class="seg-label">04 / DISCUSS</div>
+    <h2>演出計畫討論</h2>
+    <p style="color:var(--text2);margin-top:12px;margin-bottom:32px;">以下幾個問題，讓你們的團隊一起討論並寫下共識：</p>
+
+    <div class="rules-grid">
+      <div class="rule s4-discuss-card">
+        <div class="s4-q-label" style="color:var(--accent);">Q1 · 開場</div>
+        <div class="s4-q-text">演出第一首歌要選什麼？為什麼？<br><span class="s4-q-hint">開場要在 30 秒內抓住觀眾注意力。</span></div>
+        <textarea class="s4-textarea" placeholder="我們決定用____開場，因為____"></textarea>
+      </div>
+      <div class="rule s4-discuss-card">
+        <div class="s4-q-label" style="color:var(--accent);">Q2 · 壓軸</div>
+        <div class="s4-q-text">最後一首要怎麼結尾？<br><span class="s4-q-hint">壓軸是觀眾記得最久的部分。</span></div>
+        <textarea class="s4-textarea" placeholder="我們的壓軸是____，結束方式____"></textarea>
+      </div>
+      <div class="rule s4-discuss-card">
+        <div class="s4-q-label" style="color:var(--accent2);">Q3 · 串場</div>
+        <div class="s4-q-text">誰來當主持人？串場要說什麼？<br><span class="s4-q-hint">串場讓演出有故事感，不只是一首接一首。</span></div>
+        <textarea class="s4-textarea" placeholder="主持人：____，要說的故事：____"></textarea>
+      </div>
+      <div class="rule s4-discuss-card">
+        <div class="s4-q-label" style="color:var(--accent2);">Q4 · 新舊對話</div>
+        <div class="s4-q-text">怎麼讓古調和 AI 新歌產生對話？<br><span class="s4-q-hint">這場演出最特別的地方就是「新與舊」的並排。</span></div>
+        <textarea class="s4-textarea" placeholder="我們想到的方式是____"></textarea>
+      </div>
+    </div>
+
+    <div style="margin-top:48px;">
+      <div class="seg-label" style="margin-bottom:20px;">CREW · 演出分工</div>
+      <div class="grid3">
+        <div class="material-card" style="padding:24px 20px;">
+          <div class="type" style="font-size:14px;">🎤 主持人 MC</div>
+          <textarea class="s4-textarea" placeholder="姓名：" style="margin-top:12px;min-height:36px;"></textarea>
+        </div>
+        <div class="material-card" style="padding:24px 20px;">
+          <div class="type" style="font-size:14px;">🎵 音控 / 播放</div>
+          <textarea class="s4-textarea" placeholder="姓名：" style="margin-top:12px;min-height:36px;"></textarea>
+        </div>
+        <div class="material-card" style="padding:24px 20px;">
+          <div class="type" style="font-size:14px;">📋 舞台管理</div>
+          <textarea class="s4-textarea" placeholder="姓名：" style="margin-top:12px;min-height:36px;"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:48px;border:1px solid var(--border);padding:40px;background:var(--bg2);text-align:center;">
+      <div style="font-family:var(--mono);color:var(--text3);font-size:11px;letter-spacing:2px;margin-bottom:16px;">TEAM NAME · 演出團隊名稱</div>
+      <input type="text" placeholder="我們是 ___________" class="s4-team-input">
+      <div style="margin-top:28px;color:var(--text3);font-size:14px;line-height:2;">
+        古調是我們的根。AI 是我們的翅膀。<br>
+        這場演出，是把根和翅膀都帶上舞台。
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============== NEXT PREVIEW ============== -->
 <section id="next">
   <div class="next-preview">
@@ -2178,6 +2416,102 @@ function togglePlay(btn) {
   currentlyPlayingId = id;
   setTimeout(function(){ frame.scrollIntoView({behavior:'smooth', block:'center'}); }, 150);
 }
+
+/* ====== SESSION 4 ====== */
+var s4Songs = [
+  { title:'豐年祭歌謠', sub:'Ilisin', type:'ancient', dur:3 },
+  { title:'馬蘭情歌', sub:'Malan Love Song', type:'ancient', dur:3 },
+  { title:'老人飲酒歌', sub:'Elders\' Drinking Song', type:'ancient', dur:2.5 },
+  { title:'娜魯灣迎賓歌', sub:'Naruwan', type:'ancient', dur:3 },
+  { title:'捕魚歌', sub:'Fishing Song', type:'ancient', dur:2.5 },
+  { title:'海洋頌', sub:'Ocean Hymn', type:'ancient', dur:3 },
+  { title:'[Suno 新作 A 組]', sub:'本學期新作品', type:'new', dur:3 },
+  { title:'[Suno 新作 B 組]', sub:'本學期新作品', type:'new', dur:3 },
+  { title:'[Suno 新作 C 組]', sub:'本學期新作品', type:'new', dur:3 },
+];
+var s4Selected = {};
+var s4RowCount = 0;
+var S4_TOTAL = 20;
+
+function s4BadgeClass(t){ return t==='ancient'?'ancient':t==='new'?'new':'other'; }
+function s4BadgeLabel(t){ return t==='ancient'?'古調':t==='new'?'新作':'其他'; }
+
+function s4Render(){
+  var grid = document.getElementById('repertoireGrid');
+  grid.innerHTML = '';
+  s4Songs.forEach(function(s, i){
+    var sel = !!s4Selected[i];
+    var bc = s4BadgeClass(s.type);
+    var bl = s4BadgeLabel(s.type);
+    grid.innerHTML += '<div class="s4-song-card'+(sel?' selected':'')+'" onclick="s4Toggle('+i+')">' +
+      '<span class="s4-song-check">'+(sel?'✔':'○')+'</span>' +
+      '<div class="s4-song-title">'+s.title+'</div>' +
+      '<div class="s4-song-sub">'+s.sub+' · '+s.dur+' 分鐘</div>' +
+      '<span class="s4-song-badge '+bc+'">'+bl+'</span>' +
+    '</div>';
+  });
+}
+
+function s4Toggle(i){
+  s4Selected[i] = !s4Selected[i];
+  s4Render();
+}
+
+function s4AddCustomSong(){
+  var inp = document.getElementById('customSongInput');
+  var sel = document.getElementById('customSongType');
+  var title = inp.value.trim();
+  if(!title) return;
+  s4Songs.push({ title:title, sub:'自行加入', type:sel.value==='古調'?'ancient':sel.value==='新作'?'new':'other', dur:3 });
+  inp.value = '';
+  s4Render();
+}
+
+function s4UpdateBar(){
+  var total = 0;
+  document.querySelectorAll('.s4-dur-input').forEach(function(el){
+    total += parseFloat(el.value)||0;
+  });
+  var pct = Math.min(total/S4_TOTAL*100, 100);
+  document.getElementById('s4TimeBar').style.width = pct+'%';
+  document.getElementById('s4UsedMin').textContent = total.toFixed(1);
+  document.getElementById('s4LeftMin').textContent = Math.max(S4_TOTAL-total,0).toFixed(1);
+  document.getElementById('s4TimeBar').style.background =
+    total > S4_TOTAL ? '#FF2E63' : 'linear-gradient(90deg,var(--accent),var(--accent2))';
+}
+
+function s4AddRow(title, type, dur){
+  s4RowCount++;
+  var n = s4RowCount;
+  var tbody = document.getElementById('s4SetlistBody');
+  var tr = document.createElement('tr');
+  tr.className = 's4-row';
+  tr.id = 's4row'+n;
+  tr.innerHTML =
+    '<td><span class="s4-row-num">'+n+'</span></td>' +
+    '<td><input type="text" placeholder="曲目名稱" value="'+(title||'')+'"></td>' +
+    '<td><select class="s4-type-sel">' +
+      '<option value="古調"'+(type==='古調'?' selected':'')+'>古調</option>' +
+      '<option value="新作"'+(type==='新作'?' selected':'')+'>新作</option>' +
+      '<option value="串場"'+(type==='串場'?' selected':'')+'>串場</option>' +
+    '</select></td>' +
+    '<td><input type="number" class="s4-dur-input" min="0" max="20" step="0.5" value="'+(dur||3)+'" oninput="s4UpdateBar()"></td>' +
+    '<td><input type="text" placeholder="姓名"></td>' +
+    '<td><button class="s4-del-btn" onclick="s4DelRow('+n+')">✕</button></td>';
+  tbody.appendChild(tr);
+  s4UpdateBar();
+}
+
+function s4DelRow(n){
+  var el = document.getElementById('s4row'+n);
+  if(el){ el.remove(); s4UpdateBar(); }
+}
+
+// 初始化：預加三列空節目
+s4Render();
+s4AddRow('', '串場', 1);
+s4AddRow('', '古調', 3);
+s4AddRow('', '新作', 3);
 </script>
 
 </body>
